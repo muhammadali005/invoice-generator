@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Invoice Generator</h2>
+          
+        <div class="card p-4">
+            <h4>Invoice Form</h4>
+            <form id="invoiceForm">
+                <div class="form-group">
+                    <label for="customerName">Customer Name</label>
+                    <input type="text" class="form-control" id="customerName" placeholder="Enter customer name" required>
+                </div>
+                <div class="form-group">
+                    <label for="customerEmail">Customer Email</label>
+                    <input type="email" class="form-control" id="customerEmail" placeholder="Enter customer email" required>
+                </div>
+                <div class="form-group">
+                    <label for="itemName">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" placeholder="Enter item name">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" min="1">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="price">Price per item (PKR)</label>
+                        <input type="number" class="form-control" id="price" placeholder="Enter price" min="1">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-secondary btn-block" onclick="addItem()">Add Item</button>
+                <button type="button" class="btn btn-primary btn-block mt-3" onclick="generateInvoice()">Generate Invoice</button>
+            </form>
+        </div>
+
+        <div class="card p-4 mt-4">
+            <h4>Generated Invoice</h4>
+            <div id="invoice">
+                <p><strong>Customer Name:</strong> <span id="displayCustomerName"></span></p>
+                <p><strong>Customer Email:</strong> <span id="displayCustomerEmail"></span></p>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Quantity</th>
+                                <th>Price (PKR)</th>
+                                <th>Total (PKR)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceItems"></tbody>
+                    </table>
+                </div>
+                <h5 class="text-right">Grand Total: <span id="grandTotal">0</span> PKR</h5>
+            </div>
+        </div>
+
+        <div id="invoiceContainer"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
